@@ -13,5 +13,5 @@ import homeProduct from './components/HomeProduct.vue'
   </div>
   <HomeNew />
   <HomeHot />
-  <homeProduct />
+  <HomeProduct />
 </template>

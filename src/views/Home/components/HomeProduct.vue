@@ -1,3 +1,3 @@
 <template>
-    <div>我是产品</div>
+    我是产品
 </template>
