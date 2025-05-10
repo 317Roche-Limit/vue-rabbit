@@ -3,13 +3,14 @@ import {getBannerAPI} from '@/apis/home'
 import {getTopCategoryAPI} from '@/apis/category'
 import { onMounted,ref } from 'vue';
 import {useRoute} from 'vue-router'
+import GoodsItem from '@/views/Home/components/GoodsItem.vue'
 
 // 获取数据
-const categoryDate = ref({})
+const categoryData = ref({})
 const route = useRoute()
 const getCategory = async()=>{
     const res = await getTopCategoryAPI(route.params.id)
-    categoryDate.value = res.result
+    categoryData.value = res.result
 }
 console.log(route);
 onMounted(()=>getCategory())
@@ -35,7 +36,7 @@ onMounted(()=>{
       <div class="bread-container">
         <el-breadcrumb separator=">">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>{{categoryDate.name}}</el-breadcrumb-item>
+          <el-breadcrumb-item>{{categoryData.name}}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <!-- 轮播图 -->
@@ -46,6 +47,26 @@ onMounted(()=>{
             </el-carousel-item>
             </el-carousel>
         </div>
+        <!-- 分类数据 -->
+        <div class="sub-list">
+            <h3>全部分类</h3>
+            <ul>
+                <li v-for="i in categoryData.children" :key="i.id">
+                <RouterLink to="/">
+                    <img :src="i.picture" />
+                    <p>{{ i.name }}</p>
+                </RouterLink>
+                </li>
+            </ul>
+            </div>
+            <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
+            <div class="head">
+                <h3>- {{ item.name }}-</h3>
+            </div>
+            <div class="body">
+                <GoodsItem v-for="good in item.goods" :goods="good" :key="good.id" />
+            </div>
+            </div>
     </div>
   </div>
 </template>
