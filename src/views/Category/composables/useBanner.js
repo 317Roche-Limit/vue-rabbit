@@ -3,7 +3,7 @@ import {getBannerAPI} from '@/apis/home'
 import { onMounted,ref } from 'vue';
 
 
-export const useBanner = ()=>{
+export function useBanner(){
     const bannerList = ref([])
     const getBanner = async ()=>{
     const res = await getBannerAPI({

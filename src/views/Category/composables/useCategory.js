@@ -4,7 +4,7 @@ import {useRoute} from 'vue-router'
 import {getTopCategoryAPI} from '@/apis/category'
 import {onBeforeRouteUpdate} from 'vue-router'
 
-export const useCategory = ()=>{
+export function useCategory(){
     const categoryData = ref({})
     const route = useRoute()
     const getCategory = async(id = route.params.id)=>{
