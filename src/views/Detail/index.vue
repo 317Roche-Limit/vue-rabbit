@@ -31,9 +31,9 @@ onMounted(()=>getGoods())
           2、v-if 手动控制渲染时机，保证只有数据存在才渲染 -->
           <el-breadcrumb-item :to="{ path: `/category/${goods.categories[1].id}` }">{{goods.categories[1].name}}
           </el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{goods.categories[0].id}}
+          <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{goods.categories[0].name}}
           </el-breadcrumb-item>
-          <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
+          <el-breadcrumb-item>{{goods.name}}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <!-- 商品信息 -->
@@ -62,7 +62,7 @@ onMounted(()=>getGoods())
                 </li>
                 <li>
                   <p>品牌信息</p>
-                  <p>{{goods.brand.name}}</p>
+                  <p>{{goods.brand?.name}}</p>
                   <p><i class="iconfont icon-dynamic-filling"></i>品牌主页</p>
                 </li>
               </ul>
