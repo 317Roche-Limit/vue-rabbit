@@ -53,7 +53,6 @@ const doLogin = ()=>{
             // TODO LOGIN
             // 调用接口
             await userStore.getUserInfo({account,password})
-            console.log(res);
             // 提示用户
             ElMessage({type:'success',message:'登录成功'})
             // 跳转首页
