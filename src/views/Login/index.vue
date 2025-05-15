@@ -4,6 +4,8 @@ import {loginAPI} from '@/apis/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 import {useRouter} from 'vue-router'
+import {useUserStore} from '@/stores/user'
+
 // 表单校验(账号+密码)
 // 1.准备表单对象
 const form = ref({
@@ -40,6 +42,7 @@ const rules = {
 // 3.获取form实例做统一校验
 const formRef = ref(null)
 const router = useRouter()
+const userStore = useUserStore()
 const doLogin = ()=>{
     const {account,password} = form.value
     // 调用实例方法
@@ -49,7 +52,7 @@ const doLogin = ()=>{
         if(valid){
             // TODO LOGIN
             // 调用接口
-            const res = await loginAPI({account,password})
+            await userStore.getUserInfo({account,password})
             console.log(res);
             // 提示用户
             ElMessage({type:'success',message:'登录成功'})
