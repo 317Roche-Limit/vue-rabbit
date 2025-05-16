@@ -31,7 +31,7 @@ httpInstance.interceptors.response.use(res => res.data, e => {
       type:'warning',
       message:e.response.data.message
     })
-    // 401token失效拦截
+    // 401token失效处理
     if(e.response.status === 401){
       // 1. 清空本地用户数据
         userStore.clearUser()
