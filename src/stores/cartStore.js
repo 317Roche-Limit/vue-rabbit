@@ -55,6 +55,12 @@ export const useCartStore = defineStore('cart',() => {
         // 2. 用接口购物车列表覆盖本地购物车列表
         cartList.value = res.result
     }
+
+    // 清除购物车列表
+    const clearCart = () => {
+        cartList.value = []
+    }
+
     // 单选框值的改变
     const singleCheck = (skuId,selected) => {
         const item = cartList.value.find(item => item.skuId === skuId)
@@ -85,7 +91,8 @@ export const useCartStore = defineStore('cart',() => {
         addCart,
         deleteCart,
         singleCheck,
-        checkAll
+        checkAll,
+        clearCart
     }
 },{
     persist:true
