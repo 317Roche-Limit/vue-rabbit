@@ -61,7 +61,7 @@ import UserOrder from '@/views/Member/components/UserOrder.vue'
             component:Member,
             children:[
               {
-                path:'user',
+                path:'',
                 component:UserInfo
               },
               {
