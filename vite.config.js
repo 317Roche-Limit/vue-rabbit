@@ -22,6 +22,12 @@ export default defineConfig({
       resolvers: [ElementPlusResolver({importStyle:"sass"})],
     }),
   ],
+  base: process.env.NODE_ENV === 'production' 
+    ? '/vue-rabbit/' 
+    : '/',
+    build: {
+      outDir: 'docs'
+    },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
