@@ -6,10 +6,8 @@ import router from '@/router'
 
 
 const httpInstance = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' 
-    ? 'https://pcapi-xiaotuxian-front-devtest.itheima.net'
-    : '/api',
-  timeout: 20000
+    baseURL:'http://pcapi-xiaotuxian-front-devtest.itheima.net',
+    timeout:20000
 })
 
 // 拦截器
