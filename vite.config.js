@@ -22,9 +22,16 @@ export default defineConfig({
       resolvers: [ElementPlusResolver({importStyle:"sass"})],
     }),
   ],
-  base: process.env.NODE_ENV === 'production' 
-    ? '/vue-rabbit/' 
-    : '/',
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://pcapi-xiaotuxian-front-devtest.itheima.net',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
+  base: process.env.NODE_ENV === 'production' ? '/vue-rabbit/' : '/',
     build: {
       outDir: 'docs'
     },
